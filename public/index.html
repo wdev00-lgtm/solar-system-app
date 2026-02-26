@@ -30,6 +30,18 @@ canvas {
   z-index: 0;
 }
 
+/* TITLE */
+.title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
+  z-index: 3;
+}
+
 /* SUN */
 .sun {
   position: absolute;
@@ -53,15 +65,37 @@ canvas {
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-.title {
+/* ORBIT SYSTEM */
+.orbit {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 20px;
-  letter-spacing: 2px;
-  color: #00eaff;
-  text-shadow: 0 0 10px #00eaff;
-  z-index: 3;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotateOrbit linear infinite;
+}
+
+@keyframes rotateOrbit {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* PLANET */
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: 0 0 10px white;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.planet:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 0 20px #00eaff;
 }
 </style>
 </head>
@@ -73,6 +107,20 @@ canvas {
 
 <div class="sun"></div>
 
+<!-- MERCURY ORBIT -->
+<div class="orbit" style="width: 250px; height: 250px; animation-duration: 8s;">
+  <div class="planet" 
+       style="width: 18px; height: 18px; background: gray;">
+  </div>
+</div>
+
+<!-- VENUS ORBIT -->
+<div class="orbit" style="width: 350px; height: 350px; animation-duration: 12s;">
+  <div class="planet" 
+       style="width: 28px; height: 28px; background: orange;">
+  </div>
+</div>
+
 <script>
 // STAR BACKGROUND
 const canvas = document.getElementById("stars");
@@ -83,12 +131,12 @@ canvas.height = window.innerHeight;
 
 let stars = [];
 
-for (let i = 0; i < 200; i++) {
+for (let i = 0; i < 250; i++) {
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
     radius: Math.random() * 2,
-    speed: Math.random() * 0.5
+    speed: Math.random() * 0.4
   });
 }
 
