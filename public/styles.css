@@ -1,1 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
 
+body {
+  background: radial-gradient(circle at center, #0b0f2a 0%, #000 80%);
+  overflow: hidden;
+  color: white;
+  transition: 0.5s;
+}
+
+body.light {
+  background: radial-gradient(circle at center, #cdefff 0%, #4da6ff 80%);
+  color: black;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.top-bar {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  z-index: 10;
+}
+
+.top-bar input {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.solar-system {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sun {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #ffcc00, #ff3300);
+  border-radius: 50%;
+  box-shadow: 0 0 40px orange;
+  position: absolute;
+  top: -60px;
+  left: -60px;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  border-radius: 50%;
+  animation: rotate linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.popup-content {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 20px;
+  width: 400px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+}
+
+.popup img {
+  width: 200px;
+  margin: 10px 0;
+}
+
+.hidden {
+  display: none;
+}
